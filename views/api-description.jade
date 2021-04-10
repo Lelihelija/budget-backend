@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    div.api-page
+      h1= title
+      if group_list
+        div.api-group__list
+          each group in group_list
+            div.api-group__item
+              h3= group.name
+              if group.list
+                hr
+                ul
+                  each item in group.list
+                    li
+                      table
+                        tr
+                          td: b Url:
+                          td: a(href=item.url, target="_blank")= item.url
+                        tr
+                          td: b Method:
+                          td: mark= item.method
+                        tr
+                          td: b Description:
+                          td: span= item.description
